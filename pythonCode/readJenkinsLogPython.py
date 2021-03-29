@@ -13,11 +13,12 @@ import sys
 import string
 from datetime import date
 import os
+import json
 
 # testPlanName = sys.argv[1]
 # buildURL = sys.argv[2]
 testPlanName="DAM Smoke Tests UAT"
-buildURL="http://na1qalabd1:8080/job/DAM%20Smoke%20Tests%20UAT/68/"
+buildURL="http://na1qalabd1:8080/job/DAM%20Smoke%20Tests%20UAT/45/"
 
 # today = date.today()
 # dayOfWeek = today.weekday()
@@ -87,5 +88,26 @@ ws.cell(column=11, row=rowNum, value=int(totalSkipped))
 wb.save(filename1)
 
 driver.close()
+
+def write_json(data,filename=str((os.getcwd())+'\\excelFiles\\testJSON.json')):
+    with open (filename, "w") as f:
+        json.dump(data, f, indent=4)
+
+with open (str(os.getcwd())+'\\excelFiles\\testJSON.json') as json_file:
+    data = json.load(json_file)
+    temp = data["damJenkinsJobs"]
+    y = {"testPlanName" : testPlanName,
+        "txtTimeElapsed" : txtTimeElapsed,
+        "txtBuildStatus" : txtBuildStatus,
+        "featureFileCount" : int(featureFileCount),
+        "totalTests" : int(totalTests),
+        "totalPassed" : int(totalPassed),
+        "totalFailures" : int(totalFailures),
+        "totalError" : int(totalError),
+        "totalSkipped" : int(totalSkipped)
+        }
+    temp.append(y)
+
+write_json(data)
 
 print("Execution Completed")

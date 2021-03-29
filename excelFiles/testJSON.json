@@ -1,0 +1,40 @@
+{
+    "damJenkinsJobs": [
+        {
+            "testPlanName": "DAM Smoke Tests UAT"
+        },
+        {
+            "testPlanName": "DAM Smoke Tests UAT",
+            "txtTimeElapsed": "00:45:57.982",
+            "txtBuildStatus": "SUCCESS",
+            "featureFileCount": 79,
+            "totalTests": 101,
+            "totalPassed": 101,
+            "totalFailures": 0,
+            "totalError": 0,
+            "totalSkipped": 0
+        },
+        {
+            "testPlanName": "DAM Smoke Tests UAT",
+            "txtTimeElapsed": "00:50:39.348",
+            "txtBuildStatus": "FAILURE",
+            "featureFileCount": 79,
+            "totalTests": 101,
+            "totalPassed": 90,
+            "totalFailures": 3,
+            "totalError": 8,
+            "totalSkipped": 0
+        },
+        {
+            "testPlanName": "DAM Smoke Tests UAT",
+            "txtTimeElapsed": "01:05:17.790",
+            "txtBuildStatus": "FAILURE",
+            "featureFileCount": 72,
+            "totalTests": 71,
+            "totalPassed": 6,
+            "totalFailures": 65,
+            "totalError": 0,
+            "totalSkipped": 0
+        }
+    ]
+}
