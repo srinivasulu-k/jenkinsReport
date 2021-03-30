@@ -1,40 +1,23 @@
+<!-- Command to start the local server: python -m http.server -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Release Dashboard</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</head>
-<body onload="retrieveExcelNames();" style="background-color:#DFF2FD;">
-
-  <div class="container">
-    <table class="table">
-      <tr>
-        <td>
-          <div id="btnContainer">
-              <?php
-              echo "Hello";
-            ?>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <a href="dashBoardHTML.html" target="_blank" rel=”noopener noreferrer”>Click Here</a>
-  <script>
-      function retrieveExcelNames1(){
-        var myButton="<input type=\"button\" class=\"btn btn-outline-success\" value=\"OtherStatus\"/>";
-        document.getElementById("btnContainer").innerHTML=myButton;
-      }
-      function loadSelectedDashboard(excelName){
-
-      }
-    </script>
-</body>
+    <head>
+        <title> Sample </title>
+        <script src="processJS.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>				
+		<script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+		<script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+		
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    <body onload="mainLoadFunction();">
+        <h3 style="text-align: center">DAM Automation Jobs</h3>
+        <div id="container"></div>
+        <div id="pieChartContainerLeft" style="width:50%; height:200px; float:left;"></div>
+        <div id="pieChartContainerRight" style="width:50%; height:200px; float:right;"></div>
+    </body>
 </html>

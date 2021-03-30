@@ -15,10 +15,10 @@ from datetime import date
 import os
 import json
 
-# testPlanName = sys.argv[1]
-# buildURL = sys.argv[2]
-testPlanName="DAM Smoke Tests UAT"
-buildURL="http://na1qalabd1:8080/job/DAM%20Smoke%20Tests%20UAT/45/"
+testPlanName = sys.argv[1]
+buildURL = sys.argv[2]
+# testPlanName="DAM Smoke Tests UAT"
+# buildURL="http://na1qalabd1:8080/job/DAM%20Smoke%20Tests%20UAT/45/"
 
 # today = date.today()
 # dayOfWeek = today.weekday()
@@ -65,13 +65,15 @@ totalError=(resultsLine[2]).split(" ")[-1]
 totalSkipped=((resultsLine[3]).split("\n")[0]).split(" ")[-1]
 totalPassed=(int(totalTests) - (int(totalFailures) + int(totalError) + int(totalSkipped)))
 
+driver.close()
+
 # print("Total Tests--"+totalTests+"--")
 # print("Total Failures--"+totalFailures+"--")
 # print("Total Errors--"+totalError+"--")
 # print("Total Skipped--"+totalSkipped+"--")
 
-# filename1 = 'C:\\wamp64\\www\\jenkinsReport\\excelFiles\\testExcel.xlsx'
-filename1 = str(os.getcwd())+'\\excelFiles\\testExcel.xlsx'
+# filename1 = 'C:\\wamp64\\www\\jenkinsReport\\dataFiles\\testExcel.xlsx'
+filename1 = str(os.getcwd())+'\\dataFiles\\testExcel.xlsx'
 wb = openpyxl.load_workbook(filename1)
 ws = wb.active
 rowNum=ws.max_row+1
@@ -87,15 +89,14 @@ ws.cell(column=10, row=rowNum, value=int(totalError))
 ws.cell(column=11, row=rowNum, value=int(totalSkipped))
 wb.save(filename1)
 
-driver.close()
-
-def write_json(data,filename=str((os.getcwd())+'\\excelFiles\\testJSON.json')):
+def write_json(data,filename=str((os.getcwd())+'\\dataFiles\\testJSON.json')):
     with open (filename, "w") as f:
         json.dump(data, f, indent=4)
 
-with open (str(os.getcwd())+'\\excelFiles\\testJSON.json') as json_file:
+with open (str(os.getcwd())+'\\dataFiles\\testJSON.json') as json_file:
     data = json.load(json_file)
     temp = data["damJenkinsJobs"]
+    # temp = data[testPlanName.replace(" " , "")]
     y = {"testPlanName" : testPlanName,
         "txtTimeElapsed" : txtTimeElapsed,
         "txtBuildStatus" : txtBuildStatus,
