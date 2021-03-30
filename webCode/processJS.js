@@ -1,5 +1,7 @@
 
 var jsonFileName="../dataFiles/testJSON.json"
+// var jsonFileName="//NA1QALABD2/jsonData/testJSON.json"
+// var jsonFileName="https://github.com/srinivasulu-k/jenkinsReport/blob/661e271314821663976adb2faad74d3076260948/dataFiles/testJSON.json";
 var jsonData=new Object();
 
 function countObjectKeys(obj) { 
