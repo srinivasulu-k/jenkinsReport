@@ -2,50 +2,8 @@
     "damJenkinsJobs": [
         {
             "testPlanName": "DAM Smoke Tests UAT",
-            "txtTimeElapsed": "01:05:17.790",
-            "txtBuildStatus": "FAILURE",
-            "featureFileCount": 72,
-            "totalTests": 71,
-            "totalPassed": 6,
-            "totalFailures": 65,
-            "totalError": 0,
-            "totalSkipped": 0
-        },
-        {
-            "testPlanName": "DAM Smoke Tests UAT",
-            "txtTimeElapsed": "01:05:17.790",
-            "txtBuildStatus": "FAILURE",
-            "featureFileCount": 72,
-            "totalTests": 71,
-            "totalPassed": 6,
-            "totalFailures": 65,
-            "totalError": 0,
-            "totalSkipped": 0
-        },
-        {
-            "testPlanName": "DAM Smoke Tests UAT",
-            "txtTimeElapsed": "01:05:17.790",
-            "txtBuildStatus": "FAILURE",
-            "featureFileCount": 72,
-            "totalTests": 71,
-            "totalPassed": 6,
-            "totalFailures": 65,
-            "totalError": 0,
-            "totalSkipped": 0
-        },
-        {
-            "testPlanName": "DAM Smoke Tests UAT",
-            "txtTimeElapsed": "01:05:17.790",
-            "txtBuildStatus": "FAILURE",
-            "featureFileCount": 72,
-            "totalTests": 71,
-            "totalPassed": 6,
-            "totalFailures": 65,
-            "totalError": 0,
-            "totalSkipped": 0
-        },
-        {
-            "testPlanName": "DAM Smoke Tests UAT",
+            "buildNumber": 13,
+            "buildDate": "2021-02-25",
             "txtTimeElapsed": "01:05:17.790",
             "txtBuildStatus": "FAILURE",
             "featureFileCount": 72,
@@ -57,12 +15,27 @@
         },
         {
             "testPlanName": "DAM Custom Execution",
-            "txtTimeElapsed": "00:01:13.629",
+            "buildNumber": 79,
+            "buildDate": "2021-03-31",
+            "txtTimeElapsed": "00:01:12.569",
             "txtBuildStatus": "SUCCESS",
             "featureFileCount": 5,
             "totalTests": 5,
             "totalPassed": 5,
             "totalFailures": 0,
+            "totalError": 0,
+            "totalSkipped": 0
+        },
+        {
+            "testPlanName": "DAM Smoke Tests UAT",
+            "buildNumber": 13,
+            "buildDate": "2021-02-25",
+            "txtTimeElapsed": "01:05:17.790",
+            "txtBuildStatus": "FAILURE",
+            "featureFileCount": 72,
+            "totalTests": 71,
+            "totalPassed": 6,
+            "totalFailures": 65,
             "totalError": 0,
             "totalSkipped": 0
         }

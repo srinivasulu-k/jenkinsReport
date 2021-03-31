@@ -11,14 +11,18 @@ from time import sleep
 import openpyxl 
 import sys
 import string
-from datetime import date
+import datetime
+# from datetime import date
 import os
 import json
 
 testPlanName = sys.argv[1]
 buildURL = sys.argv[2]
+buildNumber = sys.argv[3]
+
 # testPlanName="DAM Smoke Tests UAT"
-# buildURL="http://na1qalabd1:8080/job/DAM%20Smoke%20Tests%20UAT/45/"
+# buildURL="http://na1qalabd1:8080/job/DAM%20Smoke%20Tests%20UAT/lastBuild/"
+# buildNumber=0
 
 # today = date.today()
 # dayOfWeek = today.weekday()
@@ -26,7 +30,7 @@ buildURL = sys.argv[2]
 # print("Build URL: "+buildURL)
 
 print("Execution Started")
-driver=webdriver.Chrome(executable_path="C:\\wamp64\\www\\jenkinsReport\\webDriver\\chromedriver.exe")
+driver=webdriver.Chrome(executable_path=str(os.getcwd())+'\\webDriver\\chromedriver.exe')
 driver.implicitly_wait(10)
 driver.maximize_window()
 driver.get( buildURL + "timestamps/?elapsed=HH:mm:ss.S" )
@@ -43,6 +47,10 @@ txtContent=str(driver.find_element_by_tag_name("pre").text)
 txtContentLastLine=txtContent.splitlines()[-1]
 txtBuildStatus=txtContentLastLine.split()[-1]
 # print("Build Status: "+txtBuildStatus)
+
+buildDate1=(txtContent.split("Finished at: "))
+buildDate=(buildDate1[1].split("T"))
+buildDate=buildDate[0]
 
 featureFileList=(txtContent.split("Feature file file:"))
 featureFileSet=set()
@@ -79,6 +87,8 @@ ws = wb.active
 rowNum=ws.max_row+1
 
 ws.cell(column=1, row=rowNum, value=testPlanName)
+ws.cell(column=2, row=rowNum, value=int(buildNumber))
+ws.cell(column=3, row=rowNum, value=buildDate)
 ws.cell(column=4, row=rowNum, value=txtTimeElapsed)
 ws.cell(column=5, row=rowNum, value=txtBuildStatus)
 ws.cell(column=6, row=rowNum, value=int(featureFileCount))
@@ -98,6 +108,8 @@ with open (str(os.getcwd())+'\\dataFiles\\testJSON.json') as json_file:
     temp = data["damJenkinsJobs"]
     # temp = data[testPlanName.replace(" " , "")]
     y = {"testPlanName" : testPlanName,
+        "buildNumber" : int(buildNumber),
+        "buildDate" : buildDate,
         "txtTimeElapsed" : txtTimeElapsed,
         "txtBuildStatus" : txtBuildStatus,
         "featureFileCount" : int(featureFileCount),

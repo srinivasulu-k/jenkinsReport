@@ -1,26 +1,28 @@
 
 var jsonFileName="../dataFiles/testJSON.json";
-// var jsonFileName="C:\jenkins\workspace\Jenkins Report Generator\dataFiles";
+// var jsonFileName="http://na1qalabd1:8080/job/jenkinsReport/ws/dataFiles/testJSON.json";
 // var jsonFileName="//NA1QALABD2/jsonData/testJSON.json";
 // var jsonFileName="https://drive.google.com/file/d/1QD8K-jsnng3ZrxkqXMbVL5QltDUJVOcJ/view?usp=sharing";
 var jsonData=new Object();
 // fetch(jsonFileName);
 
-// let h = new Headers();
-// h.append('Accept','application/jsono');
-// let req = new Request(jsonFileName , {
-//     method: 'GET',
-//     headers: h,
-//     mode: 'cors'
-// });
+
 
 function countObjectKeys(obj) { 
     return Object.keys(obj).length;
 }
 
 function mainLoadFunction(){
+    // let h = new Headers();
+    // h.append('Accept','application/jsonp');
+    // let req = new Request(jsonFileName , {
+    //     method: 'GET',
+    //     headers: h,
+    //     mode: 'cors'
+    // });
+    // fetch(req)
     fetch(jsonFileName)
-    .then(Response => Response.json())
+    .then(Response => Response.json(),"")
     .then(data=>{
         // console.log((data.damJenkinsJobs))
         // console.log(countObjectKeys(data));
@@ -76,7 +78,7 @@ function drawExecStatusPieChart1(d1){
 
 for(var i=0;i<(countObjectKeys(jsonData.damJenkinsJobs));i++){
     var chart = anychart.pie();
-	chart.title(jsonData.damJenkinsJobs[i].testPlanName);
+	chart.title(jsonData.damJenkinsJobs[i].testPlanName+ " (#" + jsonData.damJenkinsJobs[i].buildNumber + " on " +jsonData.damJenkinsJobs[i].buildDate + ")");
 
     var data = [
         {x: "Passed", value: jsonData.damJenkinsJobs[i].totalPassed, exploded: 0, fill:"#00FF00"},
@@ -84,20 +86,22 @@ for(var i=0;i<(countObjectKeys(jsonData.damJenkinsJobs));i++){
         {x: "Error", value: jsonData.damJenkinsJobs[i].totalError, exploded: 0, fill:"#FFA500"},
         {x: "Skipped", value: jsonData.damJenkinsJobs[i].totalSkipped, exploded: 0, fill:"#0000FF"}
 ];
-	
+
 	chart.data(data);
+
+    chart.fill("aquastyle");
 	
 	// display the chart in the container
     if(i%2){
-        chart.container('pieChartContainerLeft');
-    }
-    else{
         chart.container('pieChartContainerRight');
     }
+    else{
+        chart.container('pieChartContainerLeft');
+    }
 	
-	chart.fill("aquastyle");
-	//art.labels().position("outside");
-	//art.connectorStroke({color: "#595959", thickness: 2, dash:"2 2"});
+
+	// chart.labels().position("outside");
+	// chart.connectorStroke({color: "#595959", thickness: 2, dash:"2 2"});
 	chart.draw();
 	// set legend position
 	chart.legend().position("right");
