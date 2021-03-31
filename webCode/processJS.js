@@ -1,24 +1,25 @@
 
-// var jsonFileName="../dataFiles/testJSON.json"
-// var jsonFileName="//NA1QALABD2/jsonData/testJSON.json"
-var jsonFileName="https://drive.google.com/file/d/1QD8K-jsnng3ZrxkqXMbVL5QltDUJVOcJ/view?usp=sharing";
+var jsonFileName="../dataFiles/testJSON.json";
+// var jsonFileName="C:\jenkins\workspace\Jenkins Report Generator\dataFiles";
+// var jsonFileName="//NA1QALABD2/jsonData/testJSON.json";
+// var jsonFileName="https://drive.google.com/file/d/1QD8K-jsnng3ZrxkqXMbVL5QltDUJVOcJ/view?usp=sharing";
 var jsonData=new Object();
-fetch(jsonFileName);
+// fetch(jsonFileName);
 
-let h = new Headers();
-h.append('Accept','application/jsono');
-let req = new Request(jsonFileName , {
-    method: 'GET',
-    headers: h,
-    mode: 'cors'
-});
+// let h = new Headers();
+// h.append('Accept','application/jsono');
+// let req = new Request(jsonFileName , {
+//     method: 'GET',
+//     headers: h,
+//     mode: 'cors'
+// });
 
 function countObjectKeys(obj) { 
     return Object.keys(obj).length;
 }
 
 function mainLoadFunction(){
-    fetch(req)
+    fetch(jsonFileName)
     .then(Response => Response.json())
     .then(data=>{
         // console.log((data.damJenkinsJobs))
